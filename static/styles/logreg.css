@@ -1,0 +1,36 @@
+/* Elements */
+label, input   {
+    margin: 1%;
+    width: -webkit-fill-available;
+    text-align: left;
+}
+
+body    {
+    background-color: maroon;
+}
+
+/* IDs */
+#mainPage   {
+    position: static;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 2%;
+    margin-left: 33%;
+}
+
+#mainPage h2    {
+    text-align: center;
+}
+
+#mainPage div  {
+    text-align: center;
+    margin: 3%;
+}
+
+#alertMessage   {
+    margin-top: 10%;
+    margin-bottom: 2%;
+    width: fit-content;
+}

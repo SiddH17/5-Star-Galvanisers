@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome to 5 Star Galvanisers{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/logreg.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    <script src="{% static 'scripts/jquery-3.7.1.min.js' %}"></script>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid" id="alertMessage">
+        <span></span>
+    </div>
+        <div class="container-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded" id="mainPage">
+            <h2>Please login</h2>
+            <form action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="email" id="emailLabel">Email Address:
+                        <input type="email" name="email" class="form-control" placeholder="name@example.com">
+                    </label>
+                    <p id="emailValidation"></p>
+                    <label for="password" id="passwordLabel">Password:
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <i class='bx bx-show' id='showPassword' style="cursor: pointer; right: 8%;"></i>
+                        <i class='bx bx-hide' id='hidePassword' style="cursor: pointer; right: 8%; display: none;"></i>
+                    </label>
+                </div>
+                <div>
+                    <span>New over here? <a href="{% url 'register' %}">Register</a></span>
+                </div>
+                <div>
+                    <button id="loginSubmit" class="btn btn-danger" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $.getCookie = function (name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        const cookies = document.cookie.split(';');
+                        $.each(cookies, function (i, cookie) {
+                            cookie = $.trim(cookie);
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                return false; // break out of $.each loop
+                            }
+                        });
+                    }
+                    return cookieValue;
+                };
+
+            const csrftoken = $.getCookie('csrftoken');
+
+            $(document).ready(function() {
+                const hidePassword = $('#hidePassword');
+                const showPassword = $('#showPassword');
+                const loginPassword = $('#passwordLabel input');
+
+                //To show the password and change the type and logo
+                showPassword.click(function () {
+                    console.log("In Function showpassword now");
+                    loginPassword.attr('type', 'text');
+                    showPassword.css('display', 'none');
+                    hidePassword.css('display', 'block');
+                });
+
+                //To hide the password and change the type and logo
+                hidePassword.click(function () {
+                    loginPassword.attr('type', 'password');
+                    showPassword.css('display', 'block');
+                    hidePassword.css('display', 'none');
+                });
+
+                $('#loginSubmit').click(function(e)  {
+                    e.preventDefault();
+                    var inputs = $('#mainPage').find('input');
+                    var data = {};
+                    
+                    inputs.each(function()  {
+                        var name = $(this).attr('name');
+                        var value = $(this).val();
+                        data[name] = value;
+                    });
+                    console.log(data);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "login_api" %}',
+                        headers: {
+                            'X-CSRFToken': csrftoken
+                        },
+                        data: data,
+                        success: function (response) {
+                            if (response.status === 'success' || response.status === '200') {
+                                console.log(response.message);
+                                window.location.href = "{% url 'home' %}";
+                            }
+                        },
+                        error: function (xhr) {
+                            const response = xhr.responseJSON;
+                            console.log(xhr.status, xhr.responseJSON, xhr.responseText);
+                            console.log(response);
+                            if(response && response.message)    {
+                                $('#alertMessage').show();
+                                $('#alertMessage span').addClass('alert alert-danger');
+                                $('#alertMessage span').text(response.message);
+                                console.log("In the IF function");
+                                $('#alertMessage').fadeOut(5000);
+                            }
+                            else    {
+                                console.log("In the else function instead");
+                                $('#alertMessage').text('Login failed. Please try again.');
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    {% endblock content %}
+</body>
+</html>
