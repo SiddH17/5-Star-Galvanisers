@@ -79,7 +79,6 @@
                 });
 
                 $('#loginSubmit').click(function(e)  {
-                    e.preventDefault();
                     var inputs = $('#mainPage').find('input');
                     var data = {};
                     
@@ -100,8 +99,9 @@
                         success: function (response) {
                             if (response.status === 'success' || response.status === '200') {
                                 console.log(response.message);
-                                window.location.href = "{% url 'home' %}";
                             }
+
+                            window.location.href = "{% url 'home' %}";
                         },
                         error: function (xhr) {
                             const response = xhr.responseJSON;

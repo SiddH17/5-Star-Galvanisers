@@ -61,7 +61,7 @@ def login_api(request):
             }, 
             status=status.HTTP_401_UNAUTHORIZED)
     
-    token = f"{user.id}_{user.email}_{user.password}"
+    token = f"{user.id}_{user.username}_{user.password}"
     print(token)
 
     return Response({
