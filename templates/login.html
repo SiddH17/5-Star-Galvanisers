@@ -41,23 +41,6 @@
         </div>
 
         <script>
-            $.getCookie = function (name) {
-                    let cookieValue = null;
-                    if (document.cookie && document.cookie !== '') {
-                        const cookies = document.cookie.split(';');
-                        $.each(cookies, function (i, cookie) {
-                            cookie = $.trim(cookie);
-                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                return false; // break out of $.each loop
-                            }
-                        });
-                    }
-                    return cookieValue;
-                };
-
-            const csrftoken = $.getCookie('csrftoken');
-
             $(document).ready(function() {
                 const hidePassword = $('#hidePassword');
                 const showPassword = $('#showPassword');
