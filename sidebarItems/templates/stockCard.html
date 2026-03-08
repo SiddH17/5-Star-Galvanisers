@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="v content="width=device-width, initial-scale="1.0">
+    <title>{% block title %}Stock Card{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container-fluid content">
+            <h2>Items currently in stock:</h2>
+
+            <ul class="list-group">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item">And a fifth one</li>
+            </ul>
+            
+            <div class="button-div">
+                <button class="btn btn-primary">Add New Stock</button>
+            </div>
+        </div>
+    {% endblock content %} 
+</body>
+</html>

@@ -44,7 +44,7 @@
             $(document).ready(function() {
                 const hidePassword = $('#hidePassword');
                 const showPassword = $('#showPassword');
-                const loginPassword = $('#passwordLabel input');
+                const loginPassword = $('#passwordLabel input');    
 
                 //To show the password and change the type and logo
                 showPassword.click(function () {
@@ -71,6 +71,7 @@
                         data[name] = value;
                     });
                     console.log(data);
+                    debugger;
 
                     $.ajax({
                         type: 'POST',
@@ -80,6 +81,8 @@
                         },
                         data: data,
                         success: function (response) {
+                            console.log("Entered the success function now");
+                            debugger;
                             if (response.status === 'success' || response.status === '200') {
                                 console.log(response.message);
                             }
@@ -87,6 +90,7 @@
                             window.location.href = "{% url 'home' %}";
                         },
                         error: function (xhr) {
+                            debugger;
                             const response = xhr.responseJSON;
                             console.log(xhr.status, xhr.responseJSON, xhr.responseText);
                             console.log(response);

@@ -21,6 +21,18 @@ nav a:hover, nav li:hover, nav button:hover   {
     color: black !important;
 }
 
+button  {
+    background-color: maroon !important;
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+button:hover    {
+    background-color: white !important;
+    color: maroon !important;
+    border: 1px solid maroon !important;
+}
+
 /* Classes */
 .sidebar {
     width: 0px;
@@ -66,4 +78,23 @@ nav a:hover, nav li:hover, nav button:hover   {
     right: 25px;
     font-size: 30px;
     margin-left: 40px;
+}
+
+.content    {
+    padding: 1%;
+    background-color: white;
+    color: maroon;
+    margin-top: 3%;
+    width: 95%;
+}
+
+.content li {
+    margin: 1%;
+    color: maroon;
+}
+
+.button-div {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1%;
 }

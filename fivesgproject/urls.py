@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('sidebar/', include('sidebarItems.urls')),
     path('', lambda request: redirect('login')),
 
     path('login/', views.login, name='login'),
