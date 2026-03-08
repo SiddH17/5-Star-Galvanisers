@@ -61,12 +61,14 @@ def login_api(request):
             }, 
             status=status.HTTP_401_UNAUTHORIZED)
     
-    token = f"{user.id}_{user.username}_{user.password}"
-    print(token)
+    #Saving the user creds in the session created after login, once the email and password are verified
+    request.session['user_id'] = user.id
+    request.session['email'] = user.email
+    
+    print(request.session)
 
     return Response({
         'status': '200',
-        'message': 'Login Successful',
-        'token': token
+        'message': 'Login Successful'
     },
     status=status.HTTP_200_OK)

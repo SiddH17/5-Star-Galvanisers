@@ -22,7 +22,11 @@
             </ul>
             
             <div class="button-div">
-                <button class="btn btn-primary">Add New Stock</button>
+                <a href="{% url 'add-stock-card' %}">
+                    <button class="btn btn-primary">
+                        Add New Stock            
+                    </button>
+                </a>
             </div>
         </div>
     {% endblock content %} 

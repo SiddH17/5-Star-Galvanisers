@@ -33,6 +33,16 @@ button:hover    {
     border: 1px solid maroon !important;
 }
 
+a   {
+    color: white;
+    text-decoration: none;
+}
+
+/* a:hover {
+    color: maroon;
+    text-decoration: none;
+} */
+
 /* Classes */
 .sidebar {
     width: 0px;
@@ -97,4 +107,9 @@ button:hover    {
     display: flex;
     justify-content: flex-end;
     margin: 1%;
+}
+
+.addition   {
+    display: flex !important;
+    justify-content: space-between;
 }

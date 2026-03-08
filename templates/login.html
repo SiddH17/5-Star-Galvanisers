@@ -18,7 +18,7 @@
     </div>
         <div class="container-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded" id="mainPage">
             <h2>Please login</h2>
-            <form action="{% url 'home' %}" method="post">
+            <form>
                 {% csrf_token %}
                 <div>
                     <label for="email" id="emailLabel">Email Address:
@@ -35,7 +35,7 @@
                     <span>New over here? <a href="{% url 'register' %}">Register</a></span>
                 </div>
                 <div>
-                    <button id="loginSubmit" class="btn btn-danger" type="submit">Login</button>
+                    <button id="loginSubmit" class="btn btn-danger" type="button">Login</button>
                 </div>
             </form>
         </div>
@@ -76,9 +76,6 @@
                     $.ajax({
                         type: 'POST',
                         url: '{% url "login_api" %}',
-                        headers: {
-                            'X-CSRFToken': csrftoken
-                        },
                         data: data,
                         success: function (response) {
                             console.log("Entered the success function now");

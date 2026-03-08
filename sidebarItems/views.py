@@ -5,3 +5,6 @@ from django.shortcuts import render
 def stockCard(request):
     return render(request, 'stockCard.html')
 
+def addStockCard(request):
+    return render(request, 'addStockCard.html')
+

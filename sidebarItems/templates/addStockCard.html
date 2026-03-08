@@ -1,0 +1,45 @@
+{% extends "home.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Add Stock Card{% endblock title %}</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container-fluid content">
+            <h2>Add Stock Card:</h2>
+
+            <div class="content addition">
+                <label for="product-name" id="prodName">Product Name:
+                    <br>
+                    <input type="text" name="product-name">
+                </label>
+                <label for="measurement" id="unitOfMeasure">Unit of Measurement:
+                    <select name="measurement" id="measurement" class="form-select">
+                        <option value="select">--Select--</option>
+                        <option value="option1" id="option1">Option1Option1Option1</option>
+                        <option value="option2" id="option2">Option2</option>
+                        <option value="option3" id="option3">Option3</option>
+                    </select>
+                </label>
+                <label for="opening-stock" id="openingStock">Opening Stock:
+                    <br>
+                    <input type="number" name="opening-stock">
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+
+        <script>
+            $('#measurement').change(function() {
+                console.log($('#measurement').val());
+            });
+        </script>
+    {% endblock content %}
+</body>
+</html>
