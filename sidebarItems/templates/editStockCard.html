@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Add Stock Card{% endblock title %}</title>
+    <title>{% block title %}Edit Stock Item{% endblock title %}</title>
 </head>
 <body>
     {% block content %}
@@ -19,18 +19,20 @@
                     </button>
                 </a>
             </div>
-            <h2>Add Stock Card:</h2>
+            <h2>Edit Stock Card:</h2>
 
-            <!-- Form for adding the stock card details -->
             <div class="content addition">
-                <form method="post">
-                    {% csrf_token %}
-
-                        {{ form.as_p }}
-
-                        <button type="submit" class="btn btn-primary">Save</button>
-                </form>
+                <label for="product-name" id="prodName">Product Name:
+                    <br>
+                    <input type="text" name="product-name">
+                </label>
+                <label for="opening-stock" id="openingStock">Opening Stock:
+                    <br>
+                    <input type="number" name="opening-stock">
+                </label>
             </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
 
         <script>
@@ -38,6 +40,6 @@
                 console.log($('#measurement').val());
             });
         </script>
-    {% endblock content %}
+    {% endblock %}
 </body>
 </html>

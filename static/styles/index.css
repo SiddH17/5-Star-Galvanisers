@@ -110,6 +110,29 @@ a   {
 }
 
 .addition   {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1%;
+}
+
+.addition input {
+    width: -webkit-fill-available;
+}
+
+.addition label {
+    margin: 3% !important;
+}
+
+.backButton {
+    margin-bottom: 2% !important;
+}
+
+.items-list li {
     display: flex !important;
     justify-content: space-between;
+}
+
+.logo-href  {
+    color: maroon;
+    text-decoration: none;
 }

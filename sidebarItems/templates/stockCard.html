@@ -13,12 +13,22 @@
         <div class="container-fluid content">
             <h2>Items currently in stock:</h2>
 
-            <ul class="list-group">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
+            <ul class="list-group items-list">
+                <li class="list-group-item">
+                    <div>
+                        An item
+                    </div>
+                    <div>
+                        <a href="{% url 'edit-stock-card' %}" class="logo-href">
+                            <i class="fa-solid fa-square-pen"></i>
+                        </a>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </li>
+                <!-- <li class="list-group-item">A second item</li>
                 <li class="list-group-item">A third item</li>
                 <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
+                <li class="list-group-item">And a fifth one</li> -->
             </ul>
             
             <div class="button-div">
