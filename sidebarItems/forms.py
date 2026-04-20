@@ -10,6 +10,7 @@ class stockCardForm(forms.ModelForm):
 
     #Defining the dropdown options ('value stored in db', 'value displayed to the user')
     MEASUREMENT_UNIT_CHOICES = [
+        ('select', '--Select--'),
         ('kg', 'Kilograms'),
         ('l', 'Litres'),
         ('m', 'Metres'),
