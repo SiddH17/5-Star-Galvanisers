@@ -8,6 +8,12 @@ class stockCardForm(forms.ModelForm):
         model = models.stockCard
         fields = ['name', 'measurement_unit', 'opening_stock', 'description']
 
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'opening_stock': forms.NumberInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
     #Defining the dropdown options ('value stored in db', 'value displayed to the user')
     MEASUREMENT_UNIT_CHOICES = [
         ('select', '--Select--'),

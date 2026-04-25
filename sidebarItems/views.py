@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
-from .forms import stockCardForm
+from .forms import *
+from .models import *
 
 # Create your views here.
 def stockCardRender(request):
-    return render(request, 'stockCard.html')
+    stockModel = stockCard.objects.all()
+    stockFirst = stockCard.objects.first()
+    print(stockFirst.id, "The ID of the object")
+
+    return render(request, 'stockCard.html', {'stocks': stockModel})
 
 def addStockCard(request):
     if request.method == 'POST':
@@ -21,6 +26,9 @@ def addStockCard(request):
             return redirect('stock-card')
     else:
         form = stockCardForm()
+        print("In the else condition right now")
+
+    print(form.data, "The current form data")
 
     return render(request, 'addStockCard.html', {'form': form})
 

@@ -22,15 +22,13 @@
             <h2>Add Stock Card:</h2>
 
             <!-- Form for adding the stock card details -->
-            <div>
-                <form method="post" class="content addition">
-                    {% csrf_token %}
-
-                        {{ form.as_p }}
-
-                        <button type="submit" class="btn btn-primary">Save</button>
-                </form>
-            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="content addition">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
         </div>
 
         <script>
