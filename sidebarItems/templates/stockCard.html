@@ -20,6 +20,9 @@
                             {{ stock.name }}
                         </div>
                         <div>
+                            <span>
+                                Current Stock: {{ stock.current_stock }}
+                            </span>
                             <a href="{% url 'edit-stock-card' %}" class="logo-href">
                                 <i class="fa-solid fa-square-pen"></i>
                             </a>
